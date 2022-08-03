@@ -26,7 +26,7 @@ const checkSoNguyenTo = (number) => {
       }
   
       if (listNumber.length === 0) {
-        result.innerHTML = `<p>Không có số nguyên tố trong khoảng ${number1} -> ${number2}</p>`;
+        result.innerHTML = `<p>Không có số nguyên tố p>`;
       } else {
         let x = '';
         for (let number of listNumber) {
@@ -35,6 +35,6 @@ const checkSoNguyenTo = (number) => {
         result.innerHTML = x;
       }
     } else {
-      result.innerHTML = `<p>Input không hợp lệ, yêu cầu number1 < number2</p>`;
+      result.innerHTML = `<p>không hợp lệ</p>`;
     }
   };
