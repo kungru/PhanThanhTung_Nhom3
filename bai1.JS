@@ -1,32 +1,40 @@
-let s1, s2, i = 0, j, k, l = 0, A, B;
-
-s1 = prompt("nhap a:", "");
-s2 = prompt("nhap b:", "");
-
-s1 = Number(s1);
-s2 = Number(s2);
-
-if (s1 < 0 && s2 < 0) {
-    document.write('khong co so nguyen to');
-
-} else if (s1 > s2 && s1 > 0 && s2 > 0) {
-    B = s1; A = s2;
-} else if (s1 > s2 && s2 < 0) {
-    B = s1; A = 1;
-} else if (s2 > s1 && s1 > 0 && s2 > 0) {
-    A = s1; B = s2;
-} else if (s2 > s1 && s1 < 0) {
-    B = s2; A = 1;
-}
-for (j = A; j <= B; j++) {
-    l = 0;
-    for (k = 2; k <= j / 2; k++) {
-        if (j % k == 0) {
-            l++;
+const checkSoNguyenTo = (number) => {
+    let count = 0;
+    for (let i = 1; i <= number; i++) {
+      if (number % i === 0) {
+        count++;
+      }
+    }
+    if (count === 2) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  
+  document.getElementById('action').onclick = () => {
+    const number1 = parseInt(document.getElementById('number1').value);
+    const number2 = parseInt(document.getElementById('number2').value);
+    const result = document.getElementById('result');
+  
+    const listNumber = [];
+    if (number1 <= number2) {
+      for (let i = number1; i <= number2; i++) {
+        if (checkSoNguyenTo(i) === true) {
+          listNumber.push(i);
         }
+      }
+  
+      if (listNumber.length === 0) {
+        result.innerHTML = `<p>Không có số nguyên tố trong khoảng ${number1} -> ${number2}</p>`;
+      } else {
+        let x = '';
+        for (let number of listNumber) {
+          x += `<p>${number}</p>`;
+        }
+        result.innerHTML = x;
+      }
+    } else {
+      result.innerHTML = `<p>Input không hợp lệ, yêu cầu number1 < number2</p>`;
     }
-    if ((l == 0 || j == 2) && j != 1) {
-        document.write('cac so nguyen to trong khoang la ',j);
-        document.write('<br/>')
-    }
-}
+  };
